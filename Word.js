@@ -21,7 +21,7 @@ const setOfWords =(listSize,type = "Array",wordLenMin=3,worldLenMax=8)=>{
     if(type=="Array"){
         let arr = []
         for ( let i = 0 ; i < listSize ; i++){
-            arr.push(`${wordChecker(randonNumber(wordLenMin,worldLenMax))} `)
+            arr.push(`${wordChecker(randonNumber(wordLenMin,worldLenMax))}`)
         }
         return arr;
     }else{
@@ -32,4 +32,4 @@ const setOfWords =(listSize,type = "Array",wordLenMin=3,worldLenMax=8)=>{
         return asString;
     }
 }
-console.log(setOfWords(5,"String"));
+
