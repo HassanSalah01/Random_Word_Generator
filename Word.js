@@ -1,24 +1,35 @@
-const letters =["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]; 
-
+const randonNumber  = (min,max)=>{
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
 
 const alphaChar=()=>{
-    return  Math.floor(Math.random()*26);
+    // ascii => a = 97 , z =122
+    return String.fromCharCode(randonNumber(97,122));
 }
-const wordLength=(min,max)=>{
-     return Math.floor(Math.random() * (max - min + 1) + min)
-}
+
 const wordChecker = (len)=>{
     let word = "";
     for (let i = 0 ; i < len ; i++){
-        word+=letters[alphaChar()]
+        word+=alphaChar();
     }
     return word
 }
-const ArrayOfWords =(listSize,wordLenMin=3,worldLenMax=8)=>{
-    let arr = []
-    for ( let i = 0 ; i < listSize ; i++){
-        arr.push(wordChecker(wordLength(wordLenMin,worldLenMax)))
-    }
-    return arr;
-}
 
+const setOfWords =(listSize,type = "Array",wordLenMin=3,worldLenMax=8)=>{
+    // For Words As Array type = Array ... For String Set type == String
+    // By Default It is Array 
+    if(type=="Array"){
+        let arr = []
+        for ( let i = 0 ; i < listSize ; i++){
+            arr.push(`${wordChecker(randonNumber(wordLenMin,worldLenMax))} `)
+        }
+        return arr;
+    }else{
+        let asString= "";
+        for(let i = 0 ; i < listSize;i++){
+            asString+=`${wordChecker(randonNumber(wordLenMin,worldLenMax))} `
+        }
+        return asString;
+    }
+}
+console.log(setOfWords(5,"String"));
